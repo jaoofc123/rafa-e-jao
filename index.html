@@ -92,7 +92,7 @@ main{position:relative;z-index:1}nav{position:relative;z-index:2}
   <div class="pol"><img id="hp" alt=""><p id="hl"></p></div>
   <p class="mut" id="ds" style="font-size:1.5rem"></p>
   <a class="w mus" id="mk" target="_blank" rel="noopener"><div class="vin">💿</div><div><small>🎵 música que eu amo, espero que você ame.</small><b id="mn"></b><span id="ma"></span></div></a>
-  <p class="mut" style="margin-top:20px">Feito com carinho. Simples, mas espero que você goste muito. 💛</p>
+  <p class="mut" style="margin-top:20px">Feito com carinho. Simples e talvez meio clichê, mas espero que você goste muito. 💛</p>
  </div>
 
  <div class="pg" id="p1">
@@ -121,7 +121,7 @@ var IMG={"j1": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFB
 var CFG={
  desde:"07.09.2026",
  fotoInicio:IMG.nos,
- legenda:"Você é o meu lugar favorito 💛",
+ legenda:"vc é o meu lugar favorito! 🩵",
  musica:{nome:"Palácios e Castelos",artista:"João Gomes",link:"https://open.spotify.com/intl-pt/track/6BvbvVwmMQE8OtmzT4Qndm?si=0ae9dc7472974927"},
  puzzle:IMG.pz,
  joaos:[IMG.j1,IMG.j2,IMG.j3,IMG.j4,IMG.j5],
@@ -170,7 +170,7 @@ function back(){clearInterval(window.T);G.style.display="none";G.innerHTML="";$(
 function game(k){$("menu").style.display="none";G.style.display="block";G.innerHTML='<button class="back" onclick="back()">← voltar</button><div id="gb"></div>';({mem:mem,catch:ctch,sdds:sdds})[k]()}
 // ---- memória ----
 function mem(){var P=CFG.memoria.map(function(v,i){return src(v,"foto "+(i+1))}),ix=P.map(function(v,i){return i}),c=shuf(ix.concat(ix)),o=[],f=0,lk=false;
-$("gb").innerHTML='<h2>Memória</h2><p class="mut" id="ms">ache os pares</p><div class="mg" id="mg"></div><button class="bt" onclick="mem()">🔀 embaralhar</button>';
+$("gb").innerHTML='<h2>teste sua memória</h2><p class="mut" id="ms">ache os paress</p><div class="mg" id="mg"></div><button class="bt" onclick="mem()">🔀 embaralhar</button>';
 c.forEach(function(k){var b=document.createElement("button");b.className="mc";b.dataset.k=k;
 b.onclick=function(){if(lk||b.classList.contains("up")||b.classList.contains("ok"))return;b.classList.add("up");b.style.backgroundImage='url("'+P[k]+'")';o.push(b);
 if(o.length==2){lk=true;if(o[0].dataset.k==o[1].dataset.k){o.forEach(function(x){x.classList.remove("up");x.classList.add("ok")});o=[];lk=false;f++;
@@ -178,14 +178,14 @@ if(f==P.length){$("ms").textContent="parabéns, amor! 💛 novo jogo já já..."
 else setTimeout(function(){o.forEach(function(x){x.classList.remove("up");x.style.backgroundImage=""});o=[];lk=false},800)}};$("mg").appendChild(b)})}
 // ---- pega-joãos ----
 function ctch(){var p=0,t=20,S=CFG.joaos.slice(0,5).map(function(v,i){return src(v,"João "+(i+1))});
-$("gb").innerHTML='<h2>Pega-Joãos</h2><p class="mut" id="cs">pega o João! 0 · 20s</p><div class="ar" id="ar" style="background:var(--y)"></div>';
+$("gb").innerHTML='<h2>não deixa o joão cair</h2><p class="mut" id="cs">pegue os JoãoS!! 0 · 20s</p><div class="ar" id="ar" style="background:var(--y)"></div>';
 var A=$("ar");function sp(){var x=document.createElement("img");x.className="fa";x.src=rnd(S);x.alt="";
 x.style.left=Math.random()*(A.clientWidth-70)+"px";x.style.setProperty("--h",(A.clientHeight+90)+"px");x.style.animationDuration=(2+Math.random()*1.8)+"s";
 x.onpointerdown=function(){p++;x.remove()};A.appendChild(x);setTimeout(function(){x.remove()},4000)}
 window.T=setInterval(function(){t--;sp();if(Math.random()<.7)sp();$("cs").textContent="pega o João! "+p+" · "+t+"s";
 if(t<=0){clearInterval(window.T);A.innerHTML='<p style="text-align:center;padding-top:18vh;font-size:2rem">você pegou '+p+' Joãos! 💛</p>'}},1000)}
 // ---- sdds? ----
-function sdds(){$("gb").innerHTML='<h2>Sdds?</h2><p class="mut">toque nas estrelas ✨</p><div class="ar sky" id="ar"></div>';
+function sdds(){$("gb").innerHTML='<h2>saudades?</h2><p class="mut">toque nas estrelas!! ou planetas</p><div class="ar sky" id="ar"></div>';
 var A=$("ar"),W=A.clientWidth,H=A.clientHeight,pts=[];
 shuf(CFG.estrelas.slice(0,6)).forEach(function(m){var sz=34+Math.random()*26,x,y,k=0;
 do{x=Math.random()*(W-sz-30)+10;y=Math.random()*(H-sz-30)+10;k++}while(k<80&&pts.some(function(q){return Math.hypot(q[0]-x,q[1]-y)<85}));pts.push([x,y]);
